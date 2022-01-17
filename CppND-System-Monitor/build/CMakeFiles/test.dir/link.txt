@@ -1,0 +1,1 @@
+/usr/bin/g++-7  -std=c++17  -rdynamic CMakeFiles/test.dir/test/utest_system_monitor.cpp.o CMakeFiles/systemTest.dir/src/system.cpp.o CMakeFiles/systemTest.dir/src/processor.cpp.o CMakeFiles/systemTest.dir/src/process.cpp.o  -o test -lgtest_main 

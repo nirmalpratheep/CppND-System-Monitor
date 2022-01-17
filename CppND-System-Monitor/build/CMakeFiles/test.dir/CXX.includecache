@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/workspace/CppND-System-Monitor/include/process.h
+string
+-
+
+/home/workspace/CppND-System-Monitor/include/processor.h
+
+/home/workspace/CppND-System-Monitor/include/system.h
+string
+-
+vector
+-
+process.h
+/home/workspace/CppND-System-Monitor/include/process.h
+processor.h
+/home/workspace/CppND-System-Monitor/include/processor.h
+
+/home/workspace/CppND-System-Monitor/test/utest_system_monitor.cpp
+gtest/gtest.h
+/home/workspace/CppND-System-Monitor/test/gtest/gtest.h
+../include/system.h
+/home/workspace/CppND-System-Monitor/include/system.h
+

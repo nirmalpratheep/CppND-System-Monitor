@@ -133,7 +133,7 @@ vector<string> LinuxParser::CpuUtilization() {
     }
   }
   filestream.close();
-  return std::move(cpuTimes);
+  return cpuTimes;
  }
 
 int LinuxParser::TotalProcesses() {
@@ -177,21 +177,22 @@ string LinuxParser::Command(int pid ) {
   std::ifstream stream(kProcDirectory+std::to_string(pid)+kCmdlineFilename);
   if (stream.is_open()){
     std::getline(stream, cmd);
+    if(cmd.length()>40)
+      cmd = cmd.substr(0,40)+"...";
   }
   return cmd;
  }
 
 
 string LinuxParser::Ram(int pid ) { 
-  float val{0.0};
-  string line, key;
+  string line, key,val;
   std::ifstream filestream(kProcDirectory+std::to_string(pid)+kStatusFilename);
   if (filestream.is_open()) {
     while(std::getline(filestream, line)){ 
       std::stringstream linestream(line);
       while (linestream >> key >> val){
-        if (key == "VmSize:") { 
-          return std::to_string(int(val/1000)); // KB to MB
+        if (key == "VmRSS:") {  // To get the exact physical memory used by the process
+          return val.length()>3?val.substr(0,val.length()-3):val; // KB to MB
         }
       }
     }

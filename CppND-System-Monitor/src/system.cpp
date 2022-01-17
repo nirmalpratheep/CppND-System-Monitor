@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -27,8 +28,9 @@ vector<Process>& System::Processes() {
     vector<int> pids = LinuxParser::Pids();
     processes_.clear();
     for(auto pid : pids) {
-        processes_.push_back(Process(pid));        
+        processes_.emplace_back(pid);        
     }
+    sort(processes_.rbegin(),processes_.rend());
     return processes_; 
 }
 

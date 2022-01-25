@@ -29,6 +29,9 @@ std::string Kernel();
 
 std::vector<std::string> CpuUtilization();
 
+//util
+std::vector<std::string> splitString(std::string line,char delim);
+
 // Processes
 std::string Command(int pid);
 std::string Ram(int pid);
